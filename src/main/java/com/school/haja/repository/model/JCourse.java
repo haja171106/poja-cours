@@ -6,20 +6,24 @@ import java.util.List;
 import java.util.UUID;
 import lombok.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
+@Entity
+@Table(name = "course")
 @Getter
 @Setter
-@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@Table(name = "course")
 public class JCourse {
+
   @Id @GeneratedValue private UUID id;
 
   @Column(nullable = false, unique = true)
   private String title;
 
+  @Column(name = "start_date")
   private Instant start;
+
+  @Column(name = "end_date")
   private Instant end;
 
   @OneToMany(mappedBy = "course")
