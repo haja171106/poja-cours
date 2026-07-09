@@ -27,18 +27,17 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name = "subscription")
 public class JSubscription {
-    @Id @GeneratedValue private UUID id;
-    @CreationTimestamp private Instant createdAt;
+  @Id @GeneratedValue private UUID id;
+  @CreationTimestamp private Instant createdAt;
 
-    @Enumerated(STRING)
-    private SubscriptionStatus status;
+  @Enumerated(STRING)
+  private SubscriptionStatus status;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private JCourse course;
+  @ManyToOne
+  @JoinColumn(name = "course_id")
+  private JCourse course;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private JUser user;
+  @ManyToOne
+  @JoinColumn(name = "user_id")
+  private JUser user;
 }
-
