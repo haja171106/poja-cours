@@ -1,30 +1,31 @@
 package com.school.haja.repository.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name = "course")
-@NoArgsConstructor
 public class JCourse {
     @Id
     @GeneratedValue
     private UUID id;
+
     @Column(nullable = false, unique = true)
-    private String Title;
+    private String title;
+
     private Instant start;
     private Instant end;
 
-    @ManyToMany
-    private List<JUser> users;
+    @OneToMany(mappedBy = "course")
+    private List<JSubscription> subscriptions;
 }
+
