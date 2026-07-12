@@ -1,8 +1,8 @@
 package com.school.haja.endpoint.rest.controller;
 
-import com.school.haja.endpoint.rest.controller.dto.CreateCourseRequest;
-import com.school.haja.repository.model.JCourse;
-import com.school.haja.service.CourseService;
+import com.school.haja.endpoint.rest.controller.dto.CreateSubscriptionRequest;
+import com.school.haja.repository.model.JSubscription;
+import com.school.haja.service.SubscriptionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("/subscriptions")
 @AllArgsConstructor
-public class CourseController {
+public class SubscriptionController {
 
-  private final CourseService courseService;
+  private final SubscriptionService subscriptionService;
 
   @PostMapping
-  public ResponseEntity<JCourse> createCourse(@RequestBody CreateCourseRequest request) {
-    var created = courseService.createCourse(request);
+  public ResponseEntity<JSubscription> subscribe(@RequestBody CreateSubscriptionRequest request) {
+    var created = subscriptionService.createSubscription(request);
     return ResponseEntity.status(HttpStatus.CREATED).body(created);
   }
 }
