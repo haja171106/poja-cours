@@ -43,8 +43,13 @@ public class SubscriptionService {
         SubscriptionConfirmationRequested.builder()
             .subscriptionId(saved.getId())
             .to(user.getEmail())
-            .userFullName(user.getFirstName() + " " + user.getLastName())
+            .userFirstName(user.getFirstName())
+            .userLastName(user.getLastName())
+            .userName(user.getUserName())
+            .userEmail(user.getEmail())
             .courseTitle(course.getTitle())
+            .courseStart(course.getStart())
+            .courseEnd(course.getEnd())
             .build();
     eventProducer.accept(List.of(event));
 
